@@ -23,18 +23,21 @@ public class ASG {
         }
 
         // 225 - 128 = 127
-        for(int i = 128; i < 225; i++){
+        for(int i = 128; i < 255; i++){
             initialState1.add(key.charAt(i) - '0');
         }
 
-        // 384 - 225 = 129
-        for(int i = 0; i < 129; i++){
+        // 384 - 255 = 129
+        for(int i = 255; i < 384; i++){
             initialState2.add(key.charAt(i) - '0');
         }
 
-        Polynom p0 = new Polynom(Arrays.asList(5, 2, 1, 0));
-        Polynom p1 = new Polynom(Arrays.asList(5, 2, 1, 0));
-        Polynom p2 = new Polynom(Arrays.asList(5, 2, 1, 0));
+        // X^120 + X^118 + X^111 + X^7 + 1
+        Polynom p0 = new Polynom(Arrays.asList(119, 117, 110, 6, 0));
+        // X^116 + X^71 + X^70 + X + 1
+        Polynom p1 = new Polynom(Arrays.asList(115, 70, 69, 1, 0));
+        // X^125 + X^108 + X^107 + X + 1
+        Polynom p2 = new Polynom(Arrays.asList(124, 107, 106, 1, 0));
 
         lfsr0 = new LFSR(initialState0, p0);
         lfsr1 = new LFSR(initialState1, p1);
